@@ -51,9 +51,10 @@ def email_sender(content):
 def main():
     today = date.today()
     month = today.strftime("%m")
+    text_month = (parser()[2][0:3])
     day = today.strftime("%d")
     months_dict = {a: b for b,a in enumerate(calendar.month_abbr)}
-    if ((months_dict.get(parser()[1][0:3])) == int(month)) and (int(parser()[1][-1]) == int(day)):
+    if ((months_dict.get(text_month) == int(month)) and (int(parser()[2][-1]) == int(day))):
         content = parser()
         email_sender(content_formatter(content))
     else:

@@ -26,7 +26,11 @@ def parser():
         time = re.findall(r'\(.*?\)', ((launch_time.text.strip()).split("\n"))[0]) 
         content.append(time[0].split("EDT")[0][1:]) # Time
         if len(list(filter(month_regex.match, content))) > 0: 
-            break
+            today = int((date.today()).strftime("%d"))
+            if (int(content[2][-1]) < today):
+                content = []
+            else:
+                break
         else:
             content = []
     return content
